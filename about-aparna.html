@@ -24,9 +24,6 @@
       --teal: #7ab8b0;
       --teal-lt: #d6eee9;
       --blush: #f0d4d4;
-      --peach: #f5ddc0;
-      --sage: #b8d4c8;
-      --sage-lt: #e4f0eb;
       --ink: #2a2535;
       --ink-mid: #4a4360;
       --ink-soft: #7a7290;
@@ -38,20 +35,15 @@
 
       --shadow-sm: 0 2px 12px rgba(42,37,53,0.08);
       --shadow-md: 0 8px 32px rgba(42,37,53,0.12);
-      --shadow-lg: 0 20px 60px rgba(42,37,53,0.16);
+      --shadow-lg: 0 25px 60px rgba(42,37,53,0.18);
 
-      --radius-sm: 10px;
-      --radius-md: 18px;
       --radius-lg: 28px;
       --radius-xl: 40px;
 
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', sans-serif;
 
-      --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
-      --ease-smooth: cubic-bezier(0.4,0,0.2,1);
-
-      --transition: all 0.4s var(--ease-smooth);
+      --transition: all 0.4s ease;
     }
 
     * {
@@ -69,21 +61,66 @@
       background: var(--cream);
       color: var(--ink);
       overflow-x: hidden;
+      position: relative;
     }
 
     img {
       max-width: 100%;
-      max-height: 50%;
       display: block;
     }
 
     .container {
       width: min(1180px, 92%);
       margin-inline: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* BACKGROUND ORBS */
+
+    .bg-orb{
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .orb1{
+      background:#c8b8e8;
+      top:-150px;
+      left:-150px;
+    }
+
+    .orb2{
+      background:#7ab8b0;
+      bottom:-150px;
+      right:-150px;
+    }
+
+    .orb3{
+      background:#f0d4d4;
+      top:40%;
+      left:40%;
     }
 
     .section-space {
       padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-space::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:120px;
+      height:1px;
+      background:linear-gradient(to right,transparent,#c8b8e8,transparent);
     }
 
     /* HERO */
@@ -109,18 +146,16 @@
     .details-eyebrow {
       color: var(--teal);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       font-weight: 700;
       margin-bottom: 1rem;
     }
 
     .details-text h1 {
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(3rem, 8vw, 6rem);
       line-height: 0.95;
       font-family: var(--font-display);
       margin-bottom: 1.5rem;
-
-      animation: fadeUp 1s ease forwards;
     }
 
     .details-subtitle {
@@ -134,6 +169,7 @@
       color: var(--ink-soft);
       line-height: 1.9;
       max-width: 650px;
+      font-size: 1.05rem;
     }
 
     .details-badges {
@@ -147,13 +183,10 @@
       padding: 0.9rem 1.2rem;
       border-radius: 999px;
       background: rgba(255,255,255,0.7);
-
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255,255,255,0.6);
-
       font-size: 0.95rem;
       color: var(--ink-mid);
-
       transition: var(--transition);
     }
 
@@ -167,21 +200,40 @@
       position: relative;
     }
 
-
     .details-profile-img {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 3 / 4;
-
-  object-fit: cover;
-
-  margin: auto;
-
-  border-radius: 30px;
-}
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      margin: auto;
+      border-radius: 30px;
+      transition: 0.5s ease;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+    }
 
     .details-profile-img:hover {
       transform: scale(1.03) rotate(-1deg);
+    }
+
+    /* BUTTON */
+
+    .premium-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 24px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#7ab8b0,#b79de7);
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      margin-top:25px;
+      transition:0.4s ease;
+      box-shadow:0 10px 30px rgba(122,184,176,0.3);
+    }
+
+    .premium-btn:hover{
+      transform:translateY(-6px) scale(1.03);
     }
 
     /* HEADINGS */
@@ -204,7 +256,7 @@
       font-family: var(--font-display);
     }
 
-    /* CARDS */
+    /* GRID */
 
     .timeline-grid,
     .therapy-grid,
@@ -214,11 +266,9 @@
       gap: 2rem;
     }
 
-    .timeline-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .therapy-grid {
+    .timeline-grid,
+    .therapy-grid,
+    .workshop-grid {
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
@@ -226,49 +276,40 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .workshop-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
+    /* GLASS CARD */
 
     .glass-card {
       background: var(--glass-bg);
-
       border: 1px solid var(--glass-brd);
-
       backdrop-filter: blur(16px);
-
       border-radius: var(--radius-lg);
-
       box-shadow: var(--shadow-sm);
-
       padding: 2rem;
-
-      transition: 0.5s var(--ease-spring);
-
+      transition: 0.5s ease;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .glass-card::before {
       content: "";
-
       position: absolute;
       inset: 0;
-
       background:
         linear-gradient(
           135deg,
           rgba(255,255,255,0.18),
           transparent
         );
-
       opacity: 0;
       transition: var(--transition);
     }
 
     .glass-card:hover {
-      transform: translateY(-14px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-16px) scale(1.02);
+      box-shadow:
+        0 25px 60px rgba(42,37,53,0.18),
+        0 0 30px rgba(122,184,176,0.15);
     }
 
     .glass-card:hover::before {
@@ -290,7 +331,6 @@
       height: 14px;
       border-radius: 50%;
       background: var(--teal);
-
       margin-bottom: 1rem;
     }
 
@@ -301,15 +341,13 @@
       font-weight: 700;
     }
 
-    /* THERAPY */
-
     .therapy-card i {
       font-size: 2rem;
       color: var(--teal);
       margin-bottom: 1rem;
     }
 
-    /* CERTIFICATES */
+    /* CERTIFICATE */
 
     .certificate-card {
       overflow: hidden;
@@ -320,7 +358,6 @@
       width: 100%;
       height: 250px;
       object-fit: cover;
-
       transition: 0.7s ease;
     }
 
@@ -330,15 +367,6 @@
 
     .certificate-content {
       padding: 1.5rem;
-    }
-
-    /* WORKSHOPS */
-
-    .workshop-year {
-      color: var(--teal);
-      font-weight: 700;
-      display: inline-block;
-      margin-bottom: 1rem;
     }
 
     /* CTA */
@@ -381,19 +409,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       margin-top: 2rem;
-
       padding: 1rem 2rem;
-
       border-radius: 999px;
-
       background: var(--teal);
       color: white;
-
       text-decoration: none;
       font-weight: 600;
-
       transition: var(--transition);
     }
 
@@ -402,30 +424,81 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* ANIMATIONS */
-
-    @keyframes fadeUp {
-
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* REVEAL */
 
     .reveal {
       opacity: 0;
-      transform: translateY(60px);
-      transition: 1s ease;
+      transform: translateY(80px) scale(0.96);
+      transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(0.22,1,0.36,1);
+      will-change: transform, opacity;
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+    }
+
+    /* POPUP */
+
+    .appreciation-popup{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      opacity:0;
+      visibility:hidden;
+      transition:0.4s ease;
+    }
+
+    .appreciation-popup.show{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .popup-content{
+      width:min(90%,500px);
+      background:white;
+      padding:35px;
+      border-radius:30px;
+      text-align:center;
+      position:relative;
+      animation:popupIn 0.5s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .popup-content h3{
+      font-family:var(--font-display);
+      font-size:2rem;
+      margin-bottom:15px;
+    }
+
+    .popup-content p{
+      line-height:1.8;
+      color:var(--ink-soft);
+      margin-bottom:10px;
+    }
+
+    .close-popup{
+      position:absolute;
+      right:20px;
+      top:10px;
+      font-size:2rem;
+      cursor:pointer;
+    }
+
+    @keyframes popupIn{
+      from{
+        opacity:0;
+        transform:translateY(50px) scale(0.9);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
     }
 
     /* MOBILE */
@@ -444,11 +517,6 @@
       .details-badges {
         justify-content: center;
       }
-
-      .details-image-wrap {
-        max-width: 430px;
-        margin-inline: auto;
-      }
     }
 
     @media (max-width: 600px) {
@@ -461,11 +529,6 @@
         padding: 1.5rem;
       }
 
-      .details-subtitle,
-      .details-description {
-        font-size: 0.97rem;
-      }
-
       .details-badges span {
         width: 100%;
         text-align: center;
@@ -474,12 +537,19 @@
       .certificate-card img {
         height: 220px;
       }
+
     }
 
   </style>
 </head>
 
 <body>
+
+  <!-- BACKGROUND GLOW -->
+
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
 
   <!-- HERO -->
 
@@ -502,9 +572,12 @@
         </p>
 
         <p class="details-description">
-          Aparna Vashishtha is a compassionate clinical psychologist dedicated to creating
-          a safe and supportive space where individuals can heal, grow, and reconnect
-          with themselves through evidence-based therapeutic care.
+          Aparna Vashishtha is known for her deeply empathetic,
+          emotionally safe, and evidence-based therapeutic approach.
+          With expertise in trauma-informed care, CBT, DBT,
+          and emotional healing, she has helped individuals navigate
+          anxiety, burnout, emotional overwhelm, relationship struggles,
+          and self-growth with compassion and clarity.
         </p>
 
         <div class="details-badges">
@@ -514,11 +587,16 @@
           <span>CBT & DBT Practitioner</span>
         </div>
 
+        <a href="https://drive.google.com/file/d/1k4QkjZaLOaYrT2YZhwwIyY8eIe8C5r0S/view?usp=sharing"
+          target="_blank"
+          class="premium-btn">
+          <i class="fa-solid fa-certificate"></i>
+          View RCI Certificate
+        </a>
+
       </div>
 
       <div class="details-image-wrap reveal">
-
-        <div class="image-glow"></div>
 
         <img src="images/about-aparna.png"
           alt="Aparna Vashishtha"
@@ -529,7 +607,6 @@
     </div>
 
   </section>
-
 
   <!-- QUALIFICATIONS -->
 
@@ -598,7 +675,6 @@
 
   </section>
 
-
   <!-- THERAPY -->
 
   <section class="section-space">
@@ -649,7 +725,6 @@
     </div>
 
   </section>
-
 
   <!-- CERTIFICATES -->
 
@@ -706,75 +781,6 @@
 
   </section>
 
-
-  <!-- WORKSHOPS -->
-
-  <section class="section-space">
-
-    <div class="container">
-
-      <div class="section-heading reveal">
-        <p class="section-mini">Community Work</p>
-        <h2>Workshops & Initiatives</h2>
-      </div>
-
-      <div class="workshop-grid">
-
-        <div class="glass-card reveal">
-
-          <span class="workshop-year">2019</span>
-
-          <h3>End The Stigma Now</h3>
-
-          <p>
-            Mental health awareness initiative engaging individuals across different age groups.
-          </p>
-
-        </div>
-
-        <div class="glass-card reveal">
-
-          <span class="workshop-year">2020</span>
-
-          <h3>COVID-19 Mental Health Helpline</h3>
-
-          <p>
-            Emotional support and psychological first-aid during the pandemic.
-          </p>
-
-        </div>
-
-        <div class="glass-card reveal">
-
-          <span class="workshop-year">2019</span>
-
-          <h3>Blackout Poetry Sessions</h3>
-
-          <p>
-            Creative expression workshops focused on emotional awareness and healing.
-          </p>
-
-        </div>
-
-        <div class="glass-card reveal">
-
-          <span class="workshop-year">2020</span>
-
-          <h3>Psychology Tutoring & Mentorship</h3>
-
-          <p>
-            One-on-one academic mentoring and psychology entrance preparation.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
   <!-- CTA -->
 
   <section class="cta-section">
@@ -803,6 +809,29 @@
 
   </section>
 
+  <!-- POPUP -->
+
+  <div class="appreciation-popup" id="popup">
+
+    <div class="popup-content">
+
+      <span class="close-popup">&times;</span>
+
+      <h3>Healing starts with feeling understood ✨</h3>
+
+      <p>
+        Aparna’s calm presence, empathy, and professional guidance
+        have helped many people reconnect with themselves emotionally.
+      </p>
+
+      <p>
+        If Aparna can help others heal and grow,
+        why can’t you give yourself that chance too?
+      </p>
+
+    </div>
+
+  </div>
 
   <!-- SCRIPT -->
 
@@ -810,19 +839,29 @@
 
     const reveals = document.querySelectorAll(".reveal");
 
-    window.addEventListener("scroll", () => {
-
-      reveals.forEach((element) => {
-
-        const windowHeight = window.innerHeight;
-        const revealTop = element.getBoundingClientRect().top;
-
-        if (revealTop < windowHeight - 100) {
-          element.classList.add("active");
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("active");
         }
-
       });
+    },{
+      threshold:0.15
+    });
 
+    reveals.forEach(el=>{
+      observer.observe(el);
+    });
+
+    const popup = document.getElementById("popup");
+
+    setTimeout(()=>{
+      popup.classList.add("show");
+    },4000);
+
+    document.querySelector(".close-popup")
+    .addEventListener("click",()=>{
+      popup.classList.remove("show");
     });
 
   </script>
