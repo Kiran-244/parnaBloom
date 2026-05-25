@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About Aparna Vashishtha</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    :root {
+      --lavender: #c8b8e8;
+      --lavender-lt: #ede6f7;
+      --teal: #7ab8b0;
+      --teal-lt: #d6eee9;
+      --blush: #f0d4d4;
+      --peach: #f5ddc0;
+      --sage: #b8d4c8;
+      --sage-lt: #e4f0eb;
+      --ink: #2a2535;
+      --ink-mid: #4a4360;
+      --ink-soft: #7a7290;
+      --cream: #faf7f2;
+      --white: #ffffff;
+
+      --glass-bg: rgba(255,255,255,0.72);
+      --glass-brd: rgba(255,255,255,0.5);
+
+      --shadow-sm: 0 2px 12px rgba(42,37,53,0.08);
+      --shadow-md: 0 8px 32px rgba(42,37,53,0.12);
+      --shadow-lg: 0 20px 60px rgba(42,37,53,0.16);
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-xl: 40px;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+
+      --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+      --ease-smooth: cubic-bezier(0.4,0,0.2,1);
+
+      --transition: all 0.4s var(--ease-smooth);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 50%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin-inline: auto;
+    }
+
+    .section-space {
+      padding: 6rem 0;
+    }
+
+    /* HERO */
+
+    .details-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 7rem 0 5rem;
+
+      background:
+        radial-gradient(circle at top left, var(--lavender-lt), transparent 35%),
+        radial-gradient(circle at bottom right, var(--teal-lt), transparent 35%),
+        var(--cream);
+    }
+
+    .details-hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .details-eyebrow {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .details-text h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 0.95;
+      font-family: var(--font-display);
+      margin-bottom: 1.5rem;
+
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .details-subtitle {
+      color: var(--ink-mid);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-description {
+      color: var(--ink-soft);
+      line-height: 1.9;
+      max-width: 650px;
+    }
+
+    .details-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .details-badges span {
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.7);
+
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+
+      transition: var(--transition);
+    }
+
+    .details-badges span:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: var(--shadow-md);
+      background: var(--white);
+    }
+
+    .details-image-wrap {
+      position: relative;
+    }
+
+
+    .details-profile-img {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+
+  object-fit: cover;
+
+  margin: auto;
+
+  border-radius: 30px;
+}
+
+    .details-profile-img:hover {
+      transform: scale(1.03) rotate(-1deg);
+    }
+
+    /* HEADINGS */
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-mini {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-family: var(--font-display);
+    }
+
+    /* CARDS */
+
+    .timeline-grid,
+    .therapy-grid,
+    .certificate-grid,
+    .workshop-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .timeline-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .therapy-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .certificate-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .workshop-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+
+      border: 1px solid var(--glass-brd);
+
+      backdrop-filter: blur(16px);
+
+      border-radius: var(--radius-lg);
+
+      box-shadow: var(--shadow-sm);
+
+      padding: 2rem;
+
+      transition: 0.5s var(--ease-spring);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.18),
+          transparent
+        );
+
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-14px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+    }
+
+    .glass-card h3 {
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .glass-card p {
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--teal);
+
+      margin-bottom: 1rem;
+    }
+
+    .timeline-date {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* THERAPY */
+
+    .therapy-card i {
+      font-size: 2rem;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    /* CERTIFICATES */
+
+    .certificate-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .certificate-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+
+      transition: 0.7s ease;
+    }
+
+    .certificate-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .certificate-content {
+      padding: 1.5rem;
+    }
+
+    /* WORKSHOPS */
+
+    .workshop-year {
+      color: var(--teal);
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* CTA */
+
+    .cta-section {
+      text-align: center;
+      padding-bottom: 7rem;
+    }
+
+    .cta-box {
+      padding: 4rem 2rem;
+      border-radius: var(--radius-xl);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(122,184,176,0.18),
+          rgba(200,184,232,0.18)
+        );
+
+      backdrop-filter: blur(16px);
+
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-family: var(--font-display);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      color: var(--ink-soft);
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.9;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-top: 2rem;
+
+      padding: 1rem 2rem;
+
+      border-radius: 999px;
+
+      background: var(--teal);
+      color: white;
+
+      text-decoration: none;
+      font-weight: 600;
+
+      transition: var(--transition);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes fadeUp {
+
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 920px) {
+
+      .details-hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .details-description {
+        margin-inline: auto;
+      }
+
+      .details-badges {
+        justify-content: center;
+      }
+
+      .details-image-wrap {
+        max-width: 430px;
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .section-space {
+        padding: 4rem 0;
+      }
+
+      .glass-card {
+        padding: 1.5rem;
+      }
+
+      .details-subtitle,
+      .details-description {
+        font-size: 0.97rem;
+      }
+
+      .details-badges span {
+        width: 100%;
+        text-align: center;
+      }
+
+      .certificate-card img {
+        height: 220px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="details-hero">
+
+    <div class="container details-hero-content">
+
+      <div class="details-text reveal">
+
+        <p class="details-eyebrow">
+          Meet Your Therapist
+        </p>
+
+        <h1>
+          Aparna <br> Vashishtha
+        </h1>
+
+        <p class="details-subtitle">
+          RCI Registered Clinical Psychologist • Trauma-Informed Therapist • Founder of ParnaBloom
+        </p>
+
+        <p class="details-description">
+          Aparna Vashishtha is a compassionate clinical psychologist dedicated to creating
+          a safe and supportive space where individuals can heal, grow, and reconnect
+          with themselves through evidence-based therapeutic care.
+        </p>
+
+        <div class="details-badges">
+          <span>M.Phil Clinical Psychology</span>
+          <span>UGC-NET Qualified</span>
+          <span>GATE AIR-68</span>
+          <span>CBT & DBT Practitioner</span>
+        </div>
+
+      </div>
+
+      <div class="details-image-wrap reveal">
+
+        <div class="image-glow"></div>
+
+        <img src="images/about-aparna.png"
+          alt="Aparna Vashishtha"
+          class="details-profile-img">
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUALIFICATIONS -->
+
+  <section class="section-space">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <p class="section-mini">Professional Journey</p>
+        <h2>Education & Qualifications</h2>
+      </div>
+
+      <div class="timeline-grid">
+
+        <div class="glass-card reveal">
+          <div class="timeline-dot"></div>
+
+          <h3>M.Phil Clinical Psychology</h3>
+
+          <p>
+            Completed from RCI Approved Institute at Gwalior Mansik Arogyashala, M.P.
+          </p>
+
+          <span class="timeline-date">2023 – 2025</span>
+        </div>
+
+        <div class="glass-card reveal">
+          <div class="timeline-dot"></div>
+
+          <h3>UGC-NET Qualified</h3>
+
+          <p>
+            Qualified National Eligibility Test for Assistant Professor in Psychology.
+          </p>
+
+          <span class="timeline-date">2021 – 2022</span>
+        </div>
+
+        <div class="glass-card reveal">
+          <div class="timeline-dot"></div>
+
+          <h3>GATE AIR-68</h3>
+
+          <p>
+            Secured All India Rank 68 in Psychology-XH.
+          </p>
+
+          <span class="timeline-date">2023</span>
+        </div>
+
+        <div class="glass-card reveal">
+          <div class="timeline-dot"></div>
+
+          <h3>Trauma-Informed Therapist</h3>
+
+          <p>
+            Specialized certification in trauma-sensitive therapy and emotional regulation.
+          </p>
+
+          <span class="timeline-date">Certified Practitioner</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THERAPY -->
+
+  <section class="section-space">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <p class="section-mini">Approach</p>
+        <h2>Therapeutic Philosophy</h2>
+      </div>
+
+      <div class="therapy-grid">
+
+        <div class="glass-card therapy-card reveal">
+          <i class="fas fa-brain"></i>
+
+          <h3>Evidence-Based Care</h3>
+
+          <p>
+            Integrating CBT, DBT, trauma-informed care, behavioral therapies,
+            and crisis intervention techniques.
+          </p>
+        </div>
+
+        <div class="glass-card therapy-card reveal">
+          <i class="fas fa-heart"></i>
+
+          <h3>Empathetic Space</h3>
+
+          <p>
+            Providing a non-judgmental environment where emotions can be explored safely.
+          </p>
+        </div>
+
+        <div class="glass-card therapy-card reveal">
+          <i class="fas fa-seedling"></i>
+
+          <h3>Healing & Growth</h3>
+
+          <p>
+            Supporting emotional resilience, self-awareness,
+            relationship healing, and personal transformation.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATES -->
+
+  <section class="section-space">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <p class="section-mini">Credentials</p>
+        <h2>Certificates & Trainings</h2>
+      </div>
+
+      <div class="certificate-grid">
+
+        <div class="glass-card certificate-card reveal">
+          <img src="images/certificate1.jpg" alt="Certificate">
+
+          <div class="certificate-content">
+            <h3>Trauma-Informed Therapy</h3>
+
+            <p>
+              Professional certification focused on trauma-sensitive therapeutic care.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card certificate-card reveal">
+          <img src="images/certificate2.jpg" alt="Certificate">
+
+          <div class="certificate-content">
+            <h3>CBT Practitioner Course</h3>
+
+            <p>
+              Certified Cognitive Behavioral Therapy training — Level 1 & 2.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card certificate-card reveal">
+          <img src="images/certificate3.jpg" alt="Certificate">
+
+          <div class="certificate-content">
+            <h3>Suicide Prevention Training</h3>
+
+            <p>
+              Gatekeeper intervention and crisis prevention training certification.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WORKSHOPS -->
+
+  <section class="section-space">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <p class="section-mini">Community Work</p>
+        <h2>Workshops & Initiatives</h2>
+      </div>
+
+      <div class="workshop-grid">
+
+        <div class="glass-card reveal">
+
+          <span class="workshop-year">2019</span>
+
+          <h3>End The Stigma Now</h3>
+
+          <p>
+            Mental health awareness initiative engaging individuals across different age groups.
+          </p>
+
+        </div>
+
+        <div class="glass-card reveal">
+
+          <span class="workshop-year">2020</span>
+
+          <h3>COVID-19 Mental Health Helpline</h3>
+
+          <p>
+            Emotional support and psychological first-aid during the pandemic.
+          </p>
+
+        </div>
+
+        <div class="glass-card reveal">
+
+          <span class="workshop-year">2019</span>
+
+          <h3>Blackout Poetry Sessions</h3>
+
+          <p>
+            Creative expression workshops focused on emotional awareness and healing.
+          </p>
+
+        </div>
+
+        <div class="glass-card reveal">
+
+          <span class="workshop-year">2020</span>
+
+          <h3>Psychology Tutoring & Mentorship</h3>
+
+          <p>
+            One-on-one academic mentoring and psychology entrance preparation.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta-section">
+
+    <div class="container">
+
+      <div class="cta-box reveal">
+
+        <h2>
+          Healing Begins With Being Heard
+        </h2>
+
+        <p>
+          Whether you’re navigating anxiety, emotional overwhelm,
+          trauma, relationship struggles, or simply feeling lost —
+          you don’t have to do it alone.
+        </p>
+
+        <a href="index.html#appointment" class="cta-btn">
+          Schedule a Session
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    window.addEventListener("scroll", () => {
+
+      reveals.forEach((element) => {
+
+        const windowHeight = window.innerHeight;
+        const revealTop = element.getBoundingClientRect().top;
+
+        if (revealTop < windowHeight - 100) {
+          element.classList.add("active");
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
