@@ -146,6 +146,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    NAVBAR
 ═══════════════════════════════════════ */
 .navbar {
+  margin-bottom: 5rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -187,7 +188,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 2rem;
 }
 .nav-links a {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--ink-mid);
   transition: color 0.3s;

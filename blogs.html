@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Blogs | ParnaBloom Therapy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root {
+      --lavender:   #c8b8e8;
+      --lavender-lt:#ede6f7;
+      --teal:       #7ab8b0;
+      --teal-lt:    #d6eee9;
+      --blush:      #f0d4d4;
+      --peach:      #f5ddc0;
+      --sage:       #b8d4c8;
+      --sage-lt:    #e4f0eb;
+      --ink:        #2a2535;
+      --ink-mid:    #4a4360;
+      --ink-soft:   #7a7290;
+      --cream:      #faf7f2;
+      --white:      #ffffff;
+      --glass-bg:   rgba(255,255,255,0.72);
+      --glass-brd:  rgba(255,255,255,0.5);
+      --shadow-sm:  0 2px 12px rgba(42,37,53,0.08);
+      --shadow-md:  0 8px 32px rgba(42,37,53,0.12);
+      --shadow-lg:  0 20px 60px rgba(42,37,53,0.16);
+      --radius-sm:  10px;
+      --radius-md:  18px;
+      --radius-lg:  28px;
+      --radius-xl:  40px;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+      --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+      --ease-smooth: cubic-bezier(0.4,0,0.2,1);
+      --transition: all 0.4s var(--ease-smooth);
+    }
+
+    body{
+      background:var(--cream);
+      font-family:var(--font-body);
+      color:var(--ink);
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(92%,1200px);
+      margin:auto;
+    }
+
+    /* =========================
+       MOBILE HOME BUTTON
+    ========================= */
+
+    .mobile-home-btn{
+      position:fixed;
+      bottom:18px;
+      left:18px;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:0.9rem 1rem;
+      border-radius:999px;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow-md);
+      color:var(--ink);
+      font-size:0.9rem;
+      font-weight:600;
+      border:1px solid rgba(42,37,53,0.08);
+    }
+
+    .mobile-home-btn span{
+      font-size:1rem;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:rgba(250,247,242,0.75);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(42,37,53,0.08);
+    }
+
+    .nav-wrapper{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 0;
+    }
+
+    .logo{
+      font-size:1.7rem;
+      font-weight:700;
+      font-family:var(--font-display);
+      letter-spacing:-0.5px;
+    }
+
+    .logo span{
+      color:var(--teal);
+    }
+
+    .nav-links{
+      display:none;
+      gap:1.5rem;
+    }
+
+    .nav-links a{
+      font-size:0.95rem;
+      color:var(--ink-soft);
+      transition:var(--transition);
+    }
+
+    .nav-links a:hover{
+      color:var(--teal);
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      padding:4rem 0 3rem;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      top:-120px;
+      right:-80px;
+      width:300px;
+      height:300px;
+      background:var(--lavender-lt);
+      border-radius:50%;
+      filter:blur(20px);
+      z-index:-1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:var(--white);
+      padding:0.8rem 1.2rem;
+      border-radius:999px;
+      font-size:0.85rem;
+      color:var(--ink-mid);
+      box-shadow:var(--shadow-sm);
+      margin-bottom:1.5rem;
+    }
+
+    .hero h1{
+      font-family:var(--font-display);
+      font-size:clamp(2.2rem,8vw,4.5rem);
+      line-height:1;
+      letter-spacing:-1px;
+      margin-bottom:1.2rem;
+    }
+
+    .hero h1 span{
+      color:var(--teal);
+    }
+
+    .hero p{
+      color:var(--ink-soft);
+      line-height:1.9;
+      font-size:1rem;
+      max-width:700px;
+    }
+
+    /* FEATURED BLOG */
+
+    .featured{
+      padding:2rem 0 5rem;
+    }
+
+    .featured-card{
+      background:var(--glass-bg);
+      border:1px solid var(--glass-brd);
+      border-radius:var(--radius-xl);
+      overflow:hidden;
+      box-shadow:var(--shadow-md);
+      backdrop-filter:blur(16px);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .featured-image{
+      height:260px;
+      background:
+      linear-gradient(rgba(42,37,53,0.15),rgba(42,37,53,0.15)),
+      url('https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .featured-content{
+      padding:1.8rem;
+    }
+
+    .mini-tag{
+      display:inline-block;
+      background:var(--lavender-lt);
+      color:var(--ink-mid);
+      padding:0.6rem 1rem;
+      border-radius:999px;
+      font-size:0.8rem;
+      margin-bottom:1rem;
+      font-weight:600;
+    }
+
+    .featured-content h2{
+      font-size:2rem;
+      line-height:1.15;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+    }
+
+    .featured-content p{
+      color:var(--ink-soft);
+      line-height:1.9;
+      margin-bottom:1.5rem;
+      font-size:0.98rem;
+
+      display:-webkit-box;
+      -webkit-line-clamp:3;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    .blog-meta{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:1.6rem;
+      color:var(--ink-soft);
+      font-size:0.9rem;
+    }
+
+    .read-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--teal),#69a59d);
+      color:var(--white);
+      padding:1rem 1.4rem;
+      border-radius:999px;
+      font-size:0.95rem;
+      transition:var(--transition);
+      box-shadow:var(--shadow-sm);
+    }
+
+    .read-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* COMING SOON */
+
+    .coming-section{
+      padding-bottom:5rem;
+    }
+
+    .section-title{
+      margin-bottom:2rem;
+    }
+
+    .section-title h2{
+      font-size:2.2rem;
+      font-family:var(--font-display);
+      margin-bottom:0.8rem;
+    }
+
+    .section-title p{
+      color:var(--ink-soft);
+      line-height:1.8;
+      max-width:650px;
+    }
+
+    .coming-grid{
+      display:grid;
+      gap:1.5rem;
+    }
+
+    .coming-card{
+      background:var(--white);
+      border-radius:var(--radius-lg);
+      padding:2rem;
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(42,37,53,0.05);
+      transition:var(--transition);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .coming-card:hover{
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-md);
+    }
+
+    .coming-card::before{
+      content:"";
+      position:absolute;
+      top:-50px;
+      right:-50px;
+      width:120px;
+      height:120px;
+      background:var(--lavender-lt);
+      border-radius:50%;
+    }
+
+    .coming-badge{
+      display:inline-block;
+      background:var(--teal-lt);
+      color:var(--ink-mid);
+      padding:0.6rem 1rem;
+      border-radius:999px;
+      font-size:0.78rem;
+      font-weight:600;
+      margin-bottom:1rem;
+      position:relative;
+      z-index:2;
+    }
+
+    .coming-card h3{
+      font-size:1.5rem;
+      line-height:1.3;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+      position:relative;
+      z-index:2;
+    }
+
+    .coming-card p{
+      color:var(--ink-soft);
+      line-height:1.8;
+      position:relative;
+      z-index:2;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter{
+      padding-bottom:6rem;
+    }
+
+    .newsletter-box{
+      background:linear-gradient(135deg,var(--lavender-lt),var(--teal-lt));
+      padding:2.5rem 1.5rem;
+      border-radius:var(--radius-xl);
+      text-align:center;
+      box-shadow:var(--shadow-md);
+    }
+
+    .newsletter-box h2{
+      font-size:2.2rem;
+      margin-bottom:1rem;
+      font-family:var(--font-display);
+    }
+
+    .newsletter-box p{
+      color:var(--ink-mid);
+      line-height:1.9;
+      max-width:650px;
+      margin:auto auto 2rem;
+    }
+
+    .newsletter-form{
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      max-width:550px;
+      margin:auto;
+    }
+
+    .newsletter-form input{
+      border:none;
+      padding:1rem 1.2rem;
+      border-radius:16px;
+      font-size:1rem;
+      outline:none;
+      font-family:var(--font-body);
+    }
+
+    .newsletter-form button{
+      border:none;
+      padding:1rem;
+      border-radius:16px;
+      background:var(--ink);
+      color:white;
+      cursor:pointer;
+      font-size:1rem;
+      transition:var(--transition);
+    }
+
+    .newsletter-form button:hover{
+      transform:translateY(-2px);
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:2rem 0 3rem;
+      text-align:center;
+      color:var(--ink-soft);
+      border-top:1px solid rgba(42,37,53,0.08);
+      font-size:0.9rem;
+    }
+
+    /* TABLET */
+
+    @media(min-width:768px){
+
+      .mobile-home-btn{
+        display:none;
+      }
+
+      .nav-links{
+        display:flex;
+      }
+
+      .featured-card{
+        display:grid;
+        grid-template-columns:1.05fr 1fr;
+      }
+
+      .featured-image{
+        height:100%;
+      }
+
+      .coming-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .newsletter-form{
+        flex-direction:row;
+      }
+
+      .newsletter-form input{
+        flex:1;
+      }
+
+      .newsletter-form button{
+        width:180px;
+      }
+
+      .hero{
+        padding:6rem 0 4rem;
+      }
+
+    }
+
+    /* DESKTOP */
+
+    @media(min-width:1100px){
+
+      .coming-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .featured-content{
+        padding:3rem;
+      }
+
+      .featured-content h2{
+        font-size:3rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE HOME BUTTON -->
+
+  <a href="index.html" class="mobile-home-btn">
+    <span>←</span> Home
+  </a>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="container nav-wrapper">
+
+      <div class="logo">
+        Parna<span>Bloom</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="vision.html">Vision</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="tag">
+        🌿 Therapist Written Reflections
+      </div>
+
+      <h1>
+        Psychology, Healing
+        <span>& Human Emotions.</span>
+      </h1>
+
+      <p>
+        A calm digital journal by Aparna Vashishtha focused on emotional wellbeing,
+        self-awareness and mental health education.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURED BLOG -->
+
+  <section class="featured">
+
+    <div class="container">
+
+      <div class="featured-card">
+
+        <div class="featured-image"></div>
+
+        <div class="featured-content">
+
+          <div class="mini-tag">
+            FEATURED PSYCHOLOGY ARTICLE
+          </div>
+
+          <h2>
+            Why Emotional Validation Is Essential For Mental Health
+          </h2>
+
+          <div class="blog-meta">
+            <span>Psychology</span>
+            <span>8 min read</span>
+            <span>May 2026</span>
+          </div>
+
+          <p>
+            Emotional validation is the process of acknowledging and accepting
+            a person's emotional experience without judgment. Research in psychology
+            shows that emotionally validated individuals often experience healthier
+            relationships, lower anxiety and stronger emotional regulation.
+          </p>
+
+          <a href="blog-details.html" class="read-btn">
+            Read Full Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- COMING SOON -->
+
+  <section class="coming-section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>
+          More Articles Coming Soon
+        </h2>
+
+        <p>
+          ParnaBloom is building a thoughtful library of therapist-written content focused on
+          emotional wellbeing, healing and mental health awareness.
+        </p>
+
+      </div>
+
+      <div class="coming-grid">
+
+        <div class="coming-card">
+
+          <div class="coming-badge">
+            COMING SOON
+          </div>
+
+          <h3>
+            Understanding Anxiety In High Achievers
+          </h3>
+
+          <p>
+            Exploring hidden anxiety patterns behind perfectionism,
+            productivity and emotional pressure.
+          </p>
+
+        </div>
+
+        <div class="coming-card">
+
+          <div class="coming-badge">
+            COMING SOON
+          </div>
+
+          <h3>
+            The Psychology Of Emotional Burnout
+          </h3>
+
+          <p>
+            Understanding how emotional exhaustion impacts relationships,
+            self-esteem and mental clarity.
+          </p>
+
+        </div>
+
+        <div class="coming-card">
+
+          <div class="coming-badge">
+            COMING SOON
+          </div>
+
+          <h3>
+            Healing Childhood Emotional Wounds
+          </h3>
+
+          <p>
+            How early emotional experiences shape adult attachment,
+            confidence and coping patterns.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <section class="newsletter">
+
+    <div class="container">
+
+      <div class="newsletter-box">
+
+        <h2>
+          Join The Healing Community
+        </h2>
+
+        <p>
+          Receive emotionally insightful articles, therapist reflections and
+          mental wellness resources directly in your inbox.
+        </p>
+
+        <form class="newsletter-form">
+
+          <input
+          type="email"
+          placeholder="Enter your email address">
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 ParnaBloom Therapy • Designed with empathy by Kiran
+  </footer>
+
+</body>
+</html>
